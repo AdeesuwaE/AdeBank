@@ -37,8 +37,10 @@ dependencies {
 	testImplementation("org.springframework.security:spring-security-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 	runtimeOnly("com.h2database:h2")
-//	implementation ("org.mapstruct:mapstruct:1.5.5.Final")
-//	annotationProcessor (" org.mapstruct:mapstruct-processor:1.5.5.Final")
+	//implementation ("org.mapstruct:mapstruct:1.5.5.Final")
+	//annotationProcessor (" org.mapstruct:mapstruct-processor:1.5.5.Final")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.1.0")
+	implementation ("org.modelmapper:modelmapper:1.1.0")
 }
 
 tasks.withType<Test> {
