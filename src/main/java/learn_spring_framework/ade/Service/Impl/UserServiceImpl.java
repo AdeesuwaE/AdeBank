@@ -5,33 +5,29 @@ import learn_spring_framework.ade.API.Dto.User.RegisterUserRequestDto;
 import learn_spring_framework.ade.CustomException.UserNotFoundException;
 import learn_spring_framework.ade.DataLayer.Entity.User;
 import learn_spring_framework.ade.DataLayer.Repository.UserRepo;
-import learn_spring_framework.ade.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl  {
 
     @Autowired
     private UserRepo userRepo;
 
-    @Override
-    public User registerUser(RegisterUserRequestDto registerUserRequestDto) {
-        User newUser = User.builder()
-                .firstName(registerUserRequestDto.getFirstName())
-                .lastName(registerUserRequestDto.getLastName())
-                .email(registerUserRequestDto.getEmail())
-                .userName(registerUserRequestDto.getUserName())
-                .password(registerUserRequestDto.getPassword())
-                .build();
 
+    public User registerUser(RegisterUserRequestDto registerUserRequestDto) {
+        User newUser = new User();
+        newUser.setFirstName(registerUserRequestDto.getFirstName());
+        newUser.setLastName(registerUserRequestDto.getLastName());
+        newUser.setEmail(registerUserRequestDto.getEmail());
+        newUser.setUserName(registerUserRequestDto.getUserName());
+        newUser.setPassword(registerUserRequestDto.getPassword());
         return userRepo.save(newUser);
     }
 
 
-    @Override
     public User loginUser(LoginUserRequestDto loginUserRequestDto) throws UserNotFoundException {
        User newLoginUser =  userRepo.getUserByEmail(loginUserRequestDto.getEmail());
        if (newLoginUser.getPassword().equals(loginUserRequestDto.getPassword())){
