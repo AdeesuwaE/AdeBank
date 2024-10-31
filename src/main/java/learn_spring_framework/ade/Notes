@@ -1,1 +1,17 @@
 The difference between getReferenceById and findById
+@Autowired and @Component are Spring annotations.
+ Important CDI annotations are @Inject (~Autowired in Spring), @Named (~Component in Spring).
+PostMapping is creating and updating
+GetMapping is retrieving
+DeleteMapping is delete
+Dependency to see actuator: implementation("org.springframework.boot:spring-boot-starter-actuator").
+The actuator is used to the beans, mappings, metrics e.t.c.
+Actuator makes it easy/helps to monitor and manage application.
+Add this management.endpoints.web.include=* to the application properties to see more info from the actuator
+Only enable things that you want to see for example:management.endpoints.web.include=health, metrics
+Commented out actuator in gradle
+Dev tools increase developer productivity
+Dependency for Dev tools = implementation("org.springframework.boot:spring-boot-devtools")
+Google adding the dev tools dependency to gradle.
+Spring Boot is better than Spring mvc, with the former you don't need to configure anything but
+with the latter you have to configure a lot of things.
