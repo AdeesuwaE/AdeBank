@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
+//Used to define controllers in the web application
 public class UserController {
     @Autowired
     private UserServiceImpl userService;
@@ -23,9 +24,17 @@ public class UserController {
 
     @GetMapping("/allUsers")
     public List<User> getAllUsers(){
-        return userService.getAllUsers();
+        return List.of(new User(1L, "Alice", "Ken", "Aken@gmail.com", "aKen", "@Aken23"),
+        new User(2L, "Ali", "Ke", "Aken@gmail.com", "aKen", "@Aken24"),
+                new User(4L, "Ali", "Ke", "Aken@gmail.com", "aKen", "@Aken24"));
+        //return userService.getAllUsers();
     }
 
+    @GetMapping("/allUsers/user")
+    public User getUsers(){
+        return new User(3L, "Alice", "Ken", "Aken@gmail.com", "aKen", "@Aken23");
+        //return userService.getAllUsers();
+    }
     //PostMapping is creating and updating
     //GetMapping is retrieving
     //DeleteMapping is delete
