@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -21,23 +22,27 @@ public class UserController {
     //All the methods here match the service class methods
     //LoginUser
     //RegisterUser
+    //PostMapping is creating
+    // PutMapping is updating
+    //PatchMapping is updating just a part
+    //GetMapping is retrieving
+    //DeleteMapping is delete
 
     @GetMapping("/allUsers")
     public List<User> getAllUsers(){
-        return List.of(new User(1L, "Alice", "Ken", "Aken@gmail.com", "aKen", "@Aken23"),
-        new User(2L, "Ali", "Ke", "Aken@gmail.com", "aKen", "@Aken24"),
-                new User(4L, "Ali", "Ke", "Aken@gmail.com", "aKen", "@Aken24"));
-        //return userService.getAllUsers();
+        return userService.getAllUsers();
+        //return List.of(new User(1L, "Alice", "Ken", "Aken@gmail.com", "aKen", "@Aken23"),
+       // new User(2L, "Ali", "Ke", "Aken@gmail.com", "aKen", "@Aken24"),
+        //new User(4L, "Ali", "Ke", "Aken@gmail.com", "aKen", "@Aken24"));
+
     }
 
-    @GetMapping("/allUsers/user")
-    public User getUsers(){
-        return new User(3L, "Alice", "Ken", "Aken@gmail.com", "aKen", "@Aken23");
-        //return userService.getAllUsers();
+    @GetMapping("/users/{id}")
+    public Optional<User> getUser(@PathVariable Long id ){
+        //return new User(3L, "Alice", "Ken", "Aken@gmail.com", "aKen", "@Aken23");
+        return userService.findById(id);
     }
-    //PostMapping is creating and updating
-    //GetMapping is retrieving
-    //DeleteMapping is delete
+
     @PostMapping("/register")
     public ResponseEntity<User> registerUsers(@RequestBody RegisterUserRequestDto user){
         User savedUser = userService.registerUser(user);
@@ -54,5 +59,10 @@ public class UserController {
             throw new RuntimeException(e);
         }
         return new ResponseEntity<>(registeredUser, HttpStatus.ACCEPTED);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<User> deleteUser(@PathVariable Long id){
+        return
     }
 }

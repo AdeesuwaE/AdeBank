@@ -15,3 +15,10 @@ Dependency for Dev tools = implementation("org.springframework.boot:spring-boot-
 Google adding the dev tools dependency to gradle.
 Spring Boot is better than Spring mvc, with the former you don't need to configure anything but
 with the latter you have to configure a lot of things.
+
+//Dto
+Request DTOs typically include only the data needed from the client to perform an operation
+(e.g., for creating or updating a resource). For post, put, delete. Data entering the server
+
+Response DTOs typically include only the data returned to the client to perform an operation
+For get,  -> post and put to show updated data. Data leaving the server

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl  {
@@ -39,5 +40,16 @@ public class UserServiceImpl  {
 
     public List<User> getAllUsers() {
         return userRepo.findAll();
+    }
+
+    public Optional<User> findById(Long id) {
+        Optional<User> savedUser = userRepo.findById(id);
+        return savedUser;
+
+    }
+
+    public User deletelUser(Long id) {
+        Optional <User> userToBeDeleted = userRepo.findById(id);
+
     }
 }

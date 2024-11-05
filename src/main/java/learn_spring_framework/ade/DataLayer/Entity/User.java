@@ -16,6 +16,7 @@ public class User {
 //Note user is a keyword in most Db stay away from it
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @PrimaryKeyJoinColumn
     private long id;
 
     @Column(name = "first_name", nullable = false)
